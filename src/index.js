@@ -14,15 +14,19 @@ class Tabuleiro extends React.Component {
     constructor(props){
         super(props);
         this.state = { 
-            casas: new Array(9).fill(null)
+            casas: new Array(9).fill(null),
+            xEhProximo: true
         };
     }
 
     clickCasa(numeroDaCasa){
         let casas = this.state.casas.slice();
-        casas[numeroDaCasa] = 'X';
+        casas[numeroDaCasa] = this.state.xEhProximo ? 'X' : 'O';
 
-        this.setState({casas: casas});
+        this.setState({
+            casas: casas,
+            xEhProximo: !this.state.xEhProximo
+        });
     }
 
     renderizarCasa(numeroDaCasa){
@@ -31,7 +35,7 @@ class Tabuleiro extends React.Component {
     }
 
     render() {
-        const status = 'Next player: X';
+        const status = 'Next player:' + (this.state.xEhProximo ? 'X' : 'O');
         return (
             <div>
                 <div className="status">{status}</div>
