@@ -2,16 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Casa extends React.Component {
-    render(){
-        return (
-            <button className="casa" onClick={() => this.props.onClick()} >
-                {this.props.model}
-            </button>
-        );
-    }
+function Casa(props){
+    return (
+        <button className="casa" onClick={props.onClick}>
+            {props.model}
+        </button>
+    );
 }
-
 
 class Tabuleiro extends React.Component {
     constructor(props){
